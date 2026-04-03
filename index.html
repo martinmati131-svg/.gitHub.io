@@ -1,20 +1,65 @@
-<!DOCTYPE html>
+
+
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Martin Mati | Project Site</title>
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f4f4f9; }
-        .container { text-align: center; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        link rel="stylesheet" href="style.css"> 
-    </style>
+    <title>Aura Platform Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Site is Live!</h1>
-        <p>Welcome to martinmati131-svg.github.io</p>
-    </div>
+
+    <div class="app-container">
+
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h3>🧠 Aura Platform</h3>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="active">
+                    <span class="material-icons-outlined">dashboard</span>
+                    Dashboard
+                </li>
+                <li>
+                    <span class="material-icons-outlined">shield</span>
+                    Focus Shield
+                </li>
+                <li>
+                    <span class="material-icons-outlined">psychology</span>
+                    Digital Twin
+                </li>
+                <li>
+                    <span class="material-icons-outlined">settings</span>
+                    Settings
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Welcome Back</h1>
+            </header>
+
+            <div class="card-grid">
+
+                <div class="card" id="brain-status-card">
+                    <h3>Aura Brain Status</h3>
+                    <div id="status-display" class="initializing">
+                        INITIALIZING...
+                    </div>
+                    <p>Confidence: <span id="confidence">--</span>%</p>
+                    <button id="shield-toggle" class="command-button">
+                        Toggle Focus Shield
+                    </button>
+                </div>
+
+                <div class="card" id="news-card">
+                    <h3>📰 News Feed</h3>
+                    <div id="rss-content">Loading feed...</div>
+                </div>
+
+            </div> </main> </div> <script src="dashboard.js"></script>
 </body>
 </html>
