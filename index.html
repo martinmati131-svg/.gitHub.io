@@ -63,5 +63,40 @@
 </div>
  </div> 
             </div> </main> </div> <script src="dashboard.js"></script>
+<script>
+    // Simulate Aura Brain Initialization
+    window.onload = function() {
+        let confidence = 0;
+        const targetConfidence = 98.4; // Target accuracy for your model
+        const confidenceElement = document.querySelector('.card p:nth-child(3)'); 
+        const statusElement = document.querySelector('.badge');
+
+        // 1. Animate Confidence Percentage
+        const interval = setInterval(() => {
+            if (confidence < targetConfidence) {
+                confidence += 0.7;
+                // Formats the text to keep that professional "Aura Brain" look
+                confidenceElement.innerHTML = `<strong>Confidence:</strong> ${confidence.toFixed(1)}%`;
+            } else {
+                clearInterval(interval);
+                confidenceElement.innerHTML = `<strong>Confidence:</strong> ${targetConfidence}% (Stable)`;
+                statusElement.style.background = "#27ae60"; // Turns deep green when "Ready"
+                statusElement.innerText = "SYSTEM READY";
+            }
+        }, 30);
+
+        // 2. Add a pulsing effect to the status badge
+        statusElement.style.animation = "pulse 2s infinite";
+    };
+</script>
+
+<style>
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+</style>
+
 </body>
 </html>
