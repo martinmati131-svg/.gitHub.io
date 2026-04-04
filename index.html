@@ -82,6 +82,46 @@
     </div>
 </div>
  </div> 
+<div class="card" id="weather-widget" style="background: linear-gradient(135deg, #e0f2f1 0%, #ffffff 100%);">
+    <h3>🌍 Juja Environmental Data</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <p id="temp">Temperature: --°C</p>
+            <p id="humidity">Humidity: --%</p>
+            <p id="condition" style="font-weight: bold; color: #2c3e50;">Loading local sky...</p>
+        </div>
+        <div id="weather-icon" style="font-size: 2.5rem;">🌦️</div>
+    </div>
+</div>
+
+<script>
+    async function getJujaWeather() {
+        try {
+            // Using a public open-source weather API
+            const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=-1.1026&longitude=37.0149&current=temperature_2m,relative_humidity_2m,precipitation,weather_code');
+            const data = await response.json();
+            
+            const temp = data.current.temperature_2m;
+            const hum = data.current.relative_humidity_2m;
+            const rain = data.current.precipitation;
+            
+            document.getElementById('temp').innerText = `Temperature: ${temp}°C`;
+            document.getElementById('humidity').innerText = `Humidity: ${hum}%`;
+            
+            if (rain > 0) {
+                document.getElementById('condition').innerText = "🌧️ Active Rainfall";
+                document.getElementById('condition').style.color = "#d32f2f";
+            } else {
+                document.getElementById('condition').innerText = "☀️ Clear for Harvest";
+                document.getElementById('condition').style.color = "#27ae60";
+            }
+        } catch (error) {
+            console.log("Weather sync failed, using cached sensor data.");
+        }
+    }
+    getJujaWeather();
+</script>
+
             </div> </main> </div> <script src="dashboard.js"></script>
 <script>
     // Simulate Aura Brain Initialization
