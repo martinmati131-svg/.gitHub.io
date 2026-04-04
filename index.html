@@ -25,15 +25,13 @@
     <div id="alert-box" style="padding: 10px; border-radius: 5px; background: #fff3cd; color: #856404; margin-bottom: 10px;">
         <strong>Current Alert:</strong> High Rainfall Detected in Juja.
     </div>
-// Add this inside your weather script
-if (rain > 0) {
-    document.getElementById('advice-box').innerHTML = `
+ { document.getElementById('advice-box').innerHTML = `
         <div style="color: #856404; background: #fff3cd; padding: 10px; border-radius: 5px;">
             ⚠️ <strong>Rain Alert:</strong> Increased moisture may dilute fruit oils. 
             <a href="https://your-blog-link.com/watery-avocados">Read Harvesting Protocol</a>
         </div>`;
 } else {
-    document.getElementById('advice-box').innerHTML = `
+    innerHTML = `
         <div style="color: #155724; background: #d4edda; padding: 10px; border-radius: 5px;">
             ✅ <strong>Dry Conditions:</strong> Ideal window for oil accumulation and Hass harvesting.
         </div>`;
