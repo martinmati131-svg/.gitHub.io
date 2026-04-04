@@ -25,6 +25,20 @@
     <div id="alert-box" style="padding: 10px; border-radius: 5px; background: #fff3cd; color: #856404; margin-bottom: 10px;">
         <strong>Current Alert:</strong> High Rainfall Detected in Juja.
     </div>
+// Add this inside your weather script
+if (rain > 0) {
+    document.getElementById('advice-box').innerHTML = `
+        <div style="color: #856404; background: #fff3cd; padding: 10px; border-radius: 5px;">
+            ⚠️ <strong>Rain Alert:</strong> Increased moisture may dilute fruit oils. 
+            <a href="https://your-blog-link.com/watery-avocados">Read Harvesting Protocol</a>
+        </div>`;
+} else {
+    document.getElementById('advice-box').innerHTML = `
+        <div style="color: #155724; background: #d4edda; padding: 10px; border-radius: 5px;">
+            ✅ <strong>Dry Conditions:</strong> Ideal window for oil accumulation and Hass harvesting.
+        </div>`;
+}
+
     <p>Block A moisture is high. We recommend delaying harvest to maintain oil density.</p>
     <a href="https://powerdreams.top/watery-avocado" style="font-weight: bold; color: #27ae60;">
         Learn why rain causes watery fruit →
@@ -76,13 +90,7 @@
                <div class="card">
     <h2>📰 News Feed</h2>
     <div class="insight-box" style="border-left: 4px solid #27ae60; padding-left: 15px;">
-        <h3 style="margin-top: 0;">🥑 Why are your avocados watery?</h3>
-        <p>Current research shows that harvest timing during the <strong>Juja long rains</strong> can dilute oil accumulation. At Powerdreams, we are tracking <strong>Dry Matter (DM)</strong> to ensure every Hass fruit hits that buttery 23% oil threshold.</p>
-// Add this inside your weather script
-if (rain > 0) {
-    document.getElementById('advice-box').innerHTML = `
-        <div style="color: #856404; background: #fff3cd; padding: 10px; border-radius: 5px;">
-            ⚠️ <strong>Rain Alert:</strong> Increased moisture may dilute fruit oils. 
+        <h3 style="margin-top: 0;">🥑 Why are your avocados watery?</h3>  
             <a href="https://powerdreams.top/watery-avocados">Read Harvesting Protocol</a>
         </div>`;
 } else {
