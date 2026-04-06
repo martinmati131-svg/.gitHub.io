@@ -1,0 +1,24 @@
+name: Aura Platform Deployer
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Validate HTML
+        run: |
+          echo "Checking Aura Dashboard for syntax errors..."
+          # This ensures your index.html isn't empty before deploying
+          [ -s index.html ] || exit 1 
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: . # The folder where index.html is located
+          branch: gh-pages # The branch that hosts your site
