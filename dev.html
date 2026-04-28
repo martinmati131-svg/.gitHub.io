@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aura Intelligence Developer Hub: ROS 2 Architecture, GPIO Pinouts, and Bio-Industrial Logic Gates.">
+    <title>Dev Node | Aura Intelligence Platform</title>
+    <style>
+        :root { 
+            --bg: #0f172a; 
+            --card-bg: #1e293b; 
+            --text: #f8fafc; 
+            --accent: #10b981; 
+            --terminal-green: #2ecc71;
+            --code-purple: #a855f7;
+        }
+        body { font-family: 'Fira Code', monospace; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; line-height: 1.6; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        header { border-bottom: 2px solid var(--accent); padding-bottom: 20px; margin-bottom: 40px; }
+        .nav-back { color: var(--accent); text-decoration: none; font-size: 0.9em; margin-bottom: 10px; display: inline-block; }
+        
+        h1, h2, h3 { color: var(--accent); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        
+        .code-block { background: #000; padding: 20px; border-radius: 8px; border-left: 4px solid var(--code-purple); overflow-x: auto; font-size: 0.9em; margin: 20px 0; }
+        .status-badge { background: rgba(16, 185, 129, 0.2); color: var(--accent); padding: 4px 10px; border-radius: 4px; font-size: 0.8em; }
+
+        .terminal-window { background: #121212; border: 1px solid #334155; border-radius: 8px; padding: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .terminal-header { color: #64748b; font-size: 0.75em; margin-bottom: 10px; border-bottom: 1px solid #334155; padding-bottom: 5px; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9em; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #334155; }
+        th { color: var(--code-purple); }
+
+        footer { text-align: center; margin-top: 60px; color: #64748b; font-size: 0.8em; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="nav-back">← Back to Live Dashboard</a>
+    <header>
+        <h1>Aura-Pi Developer Hub <span class="status-badge">v2.1 Stable</span></h1>
+        <p>Documentation for autonomous nutrient monitoring and industrial bio-extraction control systems.</p>
+    </header>
+
+    <section>
+        <h2>1. Hardware Stack</h2>
+        <div class="grid">
+            <div class="terminal-window">
+                <div class="terminal-header">CORE_SPECS.sh</div>
+                <ul style="list-style: none; padding: 0;">
+                    <li><strong>SOC:</strong> Raspberry Pi 5 (8GB RAM)</li>
+                    <li><strong>OS:</strong> Ubuntu 24.04 (Noble Numbat)</li>
+                    <li><strong>Middleware:</strong> ROS 2 Jazzy Jalisco</li>
+                    <li><strong>ADC:</strong> ADS1115 (16-bit Precision)</li>
+                </ul>
+            </div>
+            <div class="terminal-window">
+                <div class="terminal-header">GPIO_MAPPING.map</div>
+                <table>
+                    <tr><th>Pin</th><th>Mode</th><th>Function</th></tr>
+                    <tr><td>GPIO 17</td><td>PWM</td><td>NEMA 17 Stirrer</td></tr>
+                    <tr><td>GPIO 27</td><td>Input</td><td>pH Interrupt</td></tr>
+                    <tr><td>GPIO 14</td><td>1-Wire</td><td>Vat Temp Probe</td></tr>
+                    <tr><td>GPIO 22</td><td>Output</td><td>Solvent Relay</td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>2. ROS 2 Node Architecture</h2>
+        <p>The system operates using a modular node structure to ensure low-latency response to field telemetry.</p>
+        <div class="code-block">
+            <span style="color: #64748b;"># Launching the Bio-Extraction Node</span><br>
+            <span style="color: var(--accent);">ros2 run aura_industrial extractor_controller_node --ros-args -p batch_mode:=synergy_extraction</span>
+        </div>
+        <p>Current active topics include <code>/aura/soil/ph</code>, <code>/aura/industrial/yield_est</code>, and <code>/aura/environment/humidity</code>.</p>
+    </section>
+
+    <section>
+        <h2>3. Industrial Logic (Decision Matrix)</h2>
+        <p>The "Aura Brain" uses a conditional logic gate to determine extraction potency and foliar feed advisories.</p>
+        <div class="code-block" style="color: #d1d5db;">
+<pre>
+def evaluate_tithonia_synergy(ph, humidity):
+    if ph < 5.8:
+        return "PH_SOLUBILIZATION_ALERT"
+    if humidity > 75:
+        return "ONION_ANTIFUNGAL_BOOST" # Synergistic additive
+    return "STABLE_FERMENTATION"
+</pre>
+        </div>
+    </section>
+
+    <section>
+        <h2>4. API & Integration</h2>
+        <p>Data is exposed via a secure MQTT bridge for the Powerdreams dashboard.</p>
+        <ul>
+            <li><strong>Broker:</strong> Mosquitto (Encrypted)</li>
+            <li><strong>Topic Schema:</strong> <code>powerdreams/aura/node_03/telemetry</code></li>
+            <li><strong>Data Format:</strong> JSON (UTF-8)</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Powerdreams Intelligence | Engineered by Martin Mati | Juja, Kenya</p>
+    </footer>
+</div>
+
+</body>
+</html>
