@@ -35,6 +35,17 @@
 
         footer { text-align: center; margin-top: 60px; color: #64748b; font-size: 0.8em; }
     </style>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#3498db">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+
 </head>
 <body>
 
